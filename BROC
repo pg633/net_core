@@ -1,0 +1,20 @@
+#edit-mode: -*- python -*-
+#coding:utf-8
+
+COMPILER_PATH("/usr/local/bin")
+CPPFLAGS(' -g ', 'release flags')
+
+ 
+CXXFLAGS('-g ', 'release flags')
+
+PROTO_LIBRARY("Person", "proto/*.proto", Include("/Users/lianzheng/protobuf/include"))
+
+APPLICATION ('name',
+            Sources("md/a.cc" ,Include("/Users/lianzheng/protobuf/include")),
+            Libs("$OUT_ROOT/pg633/net_core/output/lib/libPerson.a", "/Users/lianzheng/protobuf/lib/libprotobuf.a")
+)
+#STATIC_LIBRARY('name',
+#            Sources("md/a.cc"))
+
+
+
