@@ -1,16 +1,32 @@
 
 set(base_src
-    # LogFile.cc
-    # FileUtil.cc
-    # ProcessInfo.cc
-    a.cc
+LogFile.cc
+FileUtil.cc
+ProcessInfo.cc
+Logging.cc
+Exception.hpp
+CurrentThread.cc
 )
 
 
-message("++++++" ${base_src})
+message("--" ${base_src})
+
+find_package(Boost COMPONENTS system filesystem REQUIRED regex thread)
+
+
+if(Boost_FOUND)
+    message(STATUS "Boost_INCLUDE_DIRS: ${Boost_INCLUDE_DIRS}")
+    message(STATUS "Boost_LIBRARIES: ${Boost_LIBRARIES}")
+    message(STATUS "Boost_VERSION: ${Boost_VERSION}")
+    include_directories(${Boost_INCLUDE_DIRS})
+endif()
 
 add_library(net_base ${base_src})
 target_link_libraries(net_base pthread )
+
+if(Boost_FOUND)
+    target_link_libraries(net_base ${Boost_LIBRARIES})
+endif()
 
 
 

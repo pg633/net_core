@@ -1,15 +1,18 @@
 #include "net/base/LogFile.h"
 #include "net/base/ProcessInfo.h"
+#include "net/base/FileUtil.h"
+
+#include <assert.h>
 #include <time.h>
 #include <memory>
+#include <string>
+#include <boost/thread/lock_guard.hpp>
 
-// using namespace md;
 
 md::LogFile::LogFile(const string &basename,
-                 off_t rollSize,
-                 bool threadSafe,
-                 int flushInterval,
-                 int checkEveryN)
+                     off_t rollSize,
+                     int flushInterval,
+                     int checkEveryN)
     : basename_(basename),
       rollSize_(rollSize),
       flushInterval_(flushInterval),
@@ -19,13 +22,11 @@ md::LogFile::LogFile(const string &basename,
       lastRoll_(0),
       lastFlush_(0)
 {
-    //   assert(basename.find('/') == string::npos);
+    assert(basename.find('/') == string::npos);
     rollFile();
 }
 
-md::LogFile::~LogFile()
-{
-}
+md::LogFile::~LogFile() = default;
 
 std::string md::LogFile::getLogFileName(const std::string &basename, time_t *now)
 {
@@ -57,8 +58,50 @@ bool md::LogFile::rollFile()
         lastRoll_ = now;
         lastFlush_ = now;
         startOfPeriod_ = start;
-        // file_.reset(new FileUtil::AppendFile(filename));
+        file_.reset(new FileUtil::AppendFile(filename));
         return true;
     }
     return false;
+}
+
+void md::LogFile::flush()
+{
+    boost::lock_guard<boost::mutex> lock(mutex_);
+    file_->flush();
+    ;
+}
+
+void md::LogFile::append(const char *inLine, int len)
+{
+    boost::lock_guard<boost::mutex> guard(mutex_);
+    appendToFile(inLine, len);
+}
+
+void md::LogFile::appendToFile(const char *inLine, int len)
+{
+    file_->append(inLine, len);
+
+    if (file_->write_bytes() > rollSize_)
+    {
+        rollFile();
+    }
+    else
+    {
+        ++count_;
+        if (count_ >= checkEveryN_)
+        {
+            count_ = 0;
+            time_t now = ::time(NULL);
+            time_t thisPeriod_ = now / kRollPerSeconds_ * kRollPerSeconds_;
+            if (thisPeriod_ != startOfPeriod_)
+            {
+                rollFile();
+            }
+            else if (now - lastFlush_ > flushInterval_)
+            {
+                lastFlush_ = now;
+                file_->flush();
+            }
+        }
+    }
 }

@@ -1,6 +1,8 @@
-cmake_minimum_required(VERSION 3.15.0)
+cmake_minimum_required(VERSION 3.11.4)
 
 project(net_core)
+# set(CMAKE_CXX_COMPILER "g++")
+set(CMAKE_CXX_COMPILER "clang++")
 
 set(CXX_FLAGS
     -g
@@ -22,6 +24,10 @@ set(CXX_FLAGS
     -Wc++11-extensions
     -rdynamic
     )
+
+set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}/lib")
+set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/run")
+
 include_directories(${PROJECT_SOURCE_DIR})
 include_directories(${PROJECT_INCLUDE_DIR})
 

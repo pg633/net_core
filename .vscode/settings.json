@@ -58,7 +58,16 @@
         "typeinfo": "cpp",
         "unordered_map": "cpp",
         "utility": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "__tree": "cpp",
+        "deque": "cpp",
+        "iomanip": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "thread": "cpp",
+        "typeindex": "cpp",
+        "variant": "cpp"
     },
     "cmake.configureOnOpen": false
 }
