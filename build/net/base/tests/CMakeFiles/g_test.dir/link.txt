@@ -1,0 +1,1 @@
+g++-8   -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/g_test.dir/g_test.cc.o  -o ../../../run/g_test /usr/local/lib/libgtest.a 

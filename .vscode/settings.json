@@ -67,7 +67,13 @@
         "set": "cpp",
         "thread": "cpp",
         "typeindex": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "clocale": "cpp",
+        "condition_variable": "cpp",
+        "fstream": "cpp",
+        "numeric": "cpp",
+        "queue": "cpp",
+        "random": "cpp"
     },
     "cmake.configureOnOpen": false
 }

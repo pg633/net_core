@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc ../../lib/libnet_core.a  CMakeFiles/net_core.dir/log.cc.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib ../../lib/libnet_core.a

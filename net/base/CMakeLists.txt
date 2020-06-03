@@ -1,12 +1,16 @@
 
+
+# set(CMAKE_CXX_COMPILER "g++-8")
+# set(CMAKE_CXX_STANDARD 17)
+
 set(base_src
-LogFile.cc
-FileUtil.cc
-ProcessInfo.cc
-Logging.cc
-Exception.hpp
-CurrentThread.cc
-)
+    LogFile.cc
+    FileUtil.cc
+    ProcessInfo.cc
+    Logging.cc
+    Exception.hpp
+    CurrentThread.cc
+    )
 
 
 message("--" ${base_src})
@@ -32,7 +36,7 @@ endif()
 
 install(TARGETS net_base DESTINATION lib)
 
-file(GLOB HEADERS "*.h")
+file(GLOB HEADERS "*.h[pp]")
 install(FILES ${HEADERS} DESTINATION include/net/base)
 
 # INSTALL(TARGETS myrun mylib mystaticlib

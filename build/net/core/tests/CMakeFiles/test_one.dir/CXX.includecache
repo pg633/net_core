@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/lianzheng/icu/netGen/net_core/net/core/tests/test_core_one.cc
+iostream
+-
+net/core/log.h
+/Users/lianzheng/icu/netGen/net_core/net/core/tests/net/core/log.h
+

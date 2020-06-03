@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc ../../lib/libnet_base.a  CMakeFiles/net_base.dir/LogFile.cc.o CMakeFiles/net_base.dir/FileUtil.cc.o CMakeFiles/net_base.dir/ProcessInfo.cc.o CMakeFiles/net_base.dir/Logging.cc.o CMakeFiles/net_base.dir/CurrentThread.cc.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib ../../lib/libnet_base.a
