@@ -1,6 +1,6 @@
 #include <iostream>
 #include "pg633/net_core/md/a.h"
-#include "pg633/test_a/src/hello.h"
+#include "pg633/test_a/src/hello.cpp"
 using namespace std;
 
 int main()

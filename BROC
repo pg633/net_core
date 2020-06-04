@@ -1,20 +1,21 @@
 #edit-mode: -*- python -*-
 #coding:utf-8
 
-COMPILER_PATH("/usr/local/bin")
+# COMPILER_PATH("/usr/bin")
 CPPFLAGS(' -g ', 'release flags')
 
  
 CXXFLAGS('-g ', 'release flags')
+CONFIGS("pg633/test_a@master@branch")   
 
 # PROTO_LIBRARY("Person", "proto/*.proto", Include("/Users/lianzheng/protobuf/include"))
-
 APPLICATION ('name',
             Sources("md/*.cc", INCLUDE("md/*.h")),
-            Libs("$OUT_ROOT/pg633/test_a/output/lib/libhello.a"))
+            Libs("$OUT_ROOT/pg633/test_a/output/libhello.a")
+           )
+#  Libs("$OUT_ROOT/pg633/test_a/output/lib/libhello.a")
 
 
-CONFIGS("pg633/test_a@master@branch")   
 
 
 
