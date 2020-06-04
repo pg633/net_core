@@ -36,7 +36,7 @@ flags = [
         '-isystem',
         '/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks' ,
         '-isystem',
-        PWD
+        '../../'
 
         ]
 SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', ]
